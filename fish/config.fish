@@ -1,8 +1,7 @@
 if status is-interactive
 end
 
-# variables
-set -x PATH $PATH:'/mnt/c/Users/nnst0knnt/AppData/Local/Programs/Microsoft VS Code/bin'
+set -x PATH $PATH:'/mnt/c/Users/{{WINDOWS_USERNAME}}/AppData/Local/Programs/Microsoft VS Code/bin'
 set -x PATH $PATH:'/opt/nvim'
 
 set -gx FZF_DEFAULT_OPTS "
@@ -35,19 +34,17 @@ set -gx VISUAL nvim
 set GHQ_SELECTOR fzf
 set fish_greeting
 
-# aliases
 alias .. 'cd ..'
 alias ... 'cd ../..'
-alias cat 'bat'
+alias cat bat
 alias ls 'eza -lha'
-alias find 'fd'
+alias find fd
 alias grep 'rg --color=always --line-number --heading --pretty'
 alias diff 'delta -s'
 alias mkdir 'mkdir -p'
 alias commit 'gitmoji -c'
-alias http 'xh'
-alias vim 'nvim'
-alias vi 'nvim'
+alias http xh
+alias vim nvim
+alias vi nvim
 
-# sources
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)

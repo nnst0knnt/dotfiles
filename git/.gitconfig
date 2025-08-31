@@ -1,8 +1,8 @@
 [user]
-	name = nnst0knnt
-	email = nnst0knnt@gmail.com
+	name = {{GIT_USER_NAME}}
+	email = {{GIT_USER_EMAIL}}
 [ghq]
-	root = /home/nnst0knnt/workspaces
+	root = {{HOME}}/workspaces
 [core]
 	autocrlf = input
 	editor = nvim
