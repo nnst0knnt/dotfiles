@@ -1,0 +1,8 @@
+Host github.com github.com--nnst0knnt
+  HostName github.com
+  IdentityFile ~/.ssh/github/nnst0knnt
+  User git
+  Port 22
+  TCPKeepAlive yes
+  AddKeysToAgent yes
+  IdentitiesOnly yes

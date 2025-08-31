@@ -1,0 +1,594 @@
+[
+  {
+    "emoji": "🎨",
+    "entity": "&#x1f3a8;",
+    "code": ":art:",
+    "description": "コードの構造/形式の改善",
+    "name": "art",
+    "semver": null
+  },
+  {
+    "emoji": "⚡️",
+    "entity": "&#x26a1;",
+    "code": ":zap:",
+    "description": "パフォーマンス改善",
+    "name": "zap",
+    "semver": "patch"
+  },
+  {
+    "emoji": "🔥",
+    "entity": "&#x1f525;",
+    "code": ":fire:",
+    "description": "コードやファイルの削除",
+    "name": "fire",
+    "semver": null
+  },
+  {
+    "emoji": "🐛",
+    "entity": "&#x1f41b;",
+    "code": ":bug:",
+    "description": "バグの修正",
+    "name": "bug",
+    "semver": "patch"
+  },
+  {
+    "emoji": "🚑️",
+    "entity": "&#128657;",
+    "code": ":ambulance:",
+    "description": "重大なホットフィックス",
+    "name": "ambulance",
+    "semver": "patch"
+  },
+  {
+    "emoji": "✨",
+    "entity": "&#x2728;",
+    "code": ":sparkles:",
+    "description": "新機能の導入",
+    "name": "sparkles",
+    "semver": "minor"
+  },
+  {
+    "emoji": "📝",
+    "entity": "&#x1f4dd;",
+    "code": ":memo:",
+    "description": "ドキュメンテーションの追加/更新",
+    "name": "memo",
+    "semver": null
+  },
+  {
+    "emoji": "🚀",
+    "entity": "&#x1f680;",
+    "code": ":rocket:",
+    "description": "デプロイ",
+    "name": "rocket",
+    "semver": null
+  },
+  {
+    "emoji": "💄",
+    "entity": "&#ff99cc;",
+    "code": ":lipstick:",
+    "description": "UIやスタイルファイルの追加/更新",
+    "name": "lipstick",
+    "semver": "patch"
+  },
+  {
+    "emoji": "🎉",
+    "entity": "&#127881;",
+    "code": ":tada:",
+    "description": "プロジェクトの開始",
+    "name": "tada",
+    "semver": null
+  },
+  {
+    "emoji": "✅",
+    "entity": "&#x2705;",
+    "code": ":white_check_mark:",
+    "description": "テストの追加/更新/合格",
+    "name": "white-check-mark",
+    "semver": null
+  },
+  {
+    "emoji": "🔒️",
+    "entity": "&#x1f512;",
+    "code": ":lock:",
+    "description": "セキュリティやプライバシーに関する問題の修正",
+    "name": "lock",
+    "semver": "patch"
+  },
+  {
+    "emoji": "🔐",
+    "entity": "&#x1f510;",
+    "code": ":closed_lock_with_key:",
+    "description": "シークレットの追加/更新",
+    "name": "closed-lock-with-key",
+    "semver": null
+  },
+  {
+    "emoji": "🔖",
+    "entity": "&#x1f516;",
+    "code": ":bookmark:",
+    "description": "リリース/バージョンタグ",
+    "name": "bookmark",
+    "semver": null
+  },
+  {
+    "emoji": "🚨",
+    "entity": "&#x1f6a8;",
+    "code": ":rotating_light:",
+    "description": "コンパイラ/リンターの警告を修正",
+    "name": "rotating-light",
+    "semver": null
+  },
+  {
+    "emoji": "🚧",
+    "entity": "&#x1f6a7;",
+    "code": ":construction:",
+    "description": "作業中",
+    "name": "construction",
+    "semver": null
+  },
+  {
+    "emoji": "💚",
+    "entity": "&#x1f49a;",
+    "code": ":green_heart:",
+    "description": "CIビルドの修正",
+    "name": "green-heart",
+    "semver": null
+  },
+  {
+    "emoji": "⬇️",
+    "entity": "⬇️",
+    "code": ":arrow_down:",
+    "description": "依存関係のダウングレード",
+    "name": "arrow-down",
+    "semver": "patch"
+  },
+  {
+    "emoji": "⬆️",
+    "entity": "⬆️",
+    "code": ":arrow_up:",
+    "description": "依存関係のアップグレード",
+    "name": "arrow-up",
+    "semver": "patch"
+  },
+  {
+    "emoji": "📌",
+    "entity": "&#x1F4CC;",
+    "code": ":pushpin:",
+    "description": "依存関係を特定のバージョンに固定",
+    "name": "pushpin",
+    "semver": "patch"
+  },
+  {
+    "emoji": "👷",
+    "entity": "&#x1f477;",
+    "code": ":construction_worker:",
+    "description": "CIビルドシステムの追加/更新",
+    "name": "construction-worker",
+    "semver": null
+  },
+  {
+    "emoji": "📈",
+    "entity": "&#x1F4C8;",
+    "code": ":chart_with_upwards_trend:",
+    "description": "分析またはトラッキングコードの追加/更新",
+    "name": "chart-with-upwards-trend",
+    "semver": "patch"
+  },
+  {
+    "emoji": "♻️",
+    "entity": "&#x267b;",
+    "code": ":recycle:",
+    "description": "コードのリファクタリング",
+    "name": "recycle",
+    "semver": null
+  },
+  {
+    "emoji": "➕",
+    "entity": "&#10133;",
+    "code": ":heavy_plus_sign:",
+    "description": "依存関係の追加",
+    "name": "heavy-plus-sign",
+    "semver": "patch"
+  },
+  {
+    "emoji": "➖",
+    "entity": "&#10134;",
+    "code": ":heavy_minus_sign:",
+    "description": "依存関係の削除",
+    "name": "heavy-minus-sign",
+    "semver": "patch"
+  },
+  {
+    "emoji": "🔧",
+    "entity": "&#x1f527;",
+    "code": ":wrench:",
+    "description": "設定ファイルの追加/更新",
+    "name": "wrench",
+    "semver": "patch"
+  },
+  {
+    "emoji": "🔨",
+    "entity": "&#128296;",
+    "code": ":hammer:",
+    "description": "開発スクリプトの追加/更新",
+    "name": "hammer",
+    "semver": null
+  },
+  {
+    "emoji": "🌐",
+    "entity": "&#127760;",
+    "code": ":globe_with_meridians:",
+    "description": "多言語対応",
+    "name": "globe-with-meridians",
+    "semver": "patch"
+  },
+  {
+    "emoji": "✏️",
+    "entity": "&#59161;",
+    "code": ":pencil2:",
+    "description": "誤字の修正",
+    "name": "pencil2",
+    "semver": "patch"
+  },
+  {
+    "emoji": "💩",
+    "entity": "&#58613;",
+    "code": ":poop:",
+    "description": "改善が必要な悪いコード",
+    "name": "poop",
+    "semver": null
+  },
+  {
+    "emoji": "⏪️",
+    "entity": "&#9194;",
+    "code": ":rewind:",
+    "description": "変更を元に戻す",
+    "name": "rewind",
+    "semver": "patch"
+  },
+  {
+    "emoji": "🔀",
+    "entity": "&#128256;",
+    "code": ":twisted_rightwards_arrows:",
+    "description": "ブランチをマージ",
+    "name": "twisted-rightwards-arrows",
+    "semver": null
+  },
+  {
+    "emoji": "📦️",
+    "entity": "&#1F4E6;",
+    "code": ":package:",
+    "description": "コンパイル済みファイルやパッケージの追加/更新",
+    "name": "package",
+    "semver": "patch"
+  },
+  {
+    "emoji": "👽️",
+    "entity": "&#1F47D;",
+    "code": ":alien:",
+    "description": "外部APIの変更に伴うコードの更新",
+    "name": "alien",
+    "semver": "patch"
+  },
+  {
+    "emoji": "🚚",
+    "entity": "&#1F69A;",
+    "code": ":truck:",
+    "description": "リソース (例：ファイル、パス、ルート) を移動/名称変更",
+    "name": "truck",
+    "semver": null
+  },
+  {
+    "emoji": "📄",
+    "entity": "&#1F4C4;",
+    "code": ":page_facing_up:",
+    "description": "ライセンスの追加/更新",
+    "name": "page-facing-up",
+    "semver": null
+  },
+  {
+    "emoji": "💥",
+    "entity": "&#x1f4a5;",
+    "code": ":boom:",
+    "description": "破壊的な変更の導入",
+    "name": "boom",
+    "semver": "major"
+  },
+  {
+    "emoji": "🍱",
+    "entity": "&#1F371",
+    "code": ":bento:",
+    "description": "アセットの追加/更新",
+    "name": "bento",
+    "semver": "patch"
+  },
+  {
+    "emoji": "♿️",
+    "entity": "&#9855;",
+    "code": ":wheelchair:",
+    "description": "アクセシビリティ改善",
+    "name": "wheelchair",
+    "semver": "patch"
+  },
+  {
+    "emoji": "💡",
+    "entity": "&#128161;",
+    "code": ":bulb:",
+    "description": "ソースコード上のコメントの追加/更新",
+    "name": "bulb",
+    "semver": null
+  },
+  {
+    "emoji": "🍻",
+    "entity": "&#x1f37b;",
+    "code": ":beers:",
+    "description": "酔った勢いでコードを書く",
+    "name": "beers",
+    "semver": null
+  },
+  {
+    "emoji": "💬",
+    "entity": "&#128172;",
+    "code": ":speech_balloon:",
+    "description": "ドキュメンテーションを追加/更新",
+    "name": "speech-balloon",
+    "semver": "patch"
+  },
+  {
+    "emoji": "🗃️",
+    "entity": "&#128451;",
+    "code": ":card_file_box:",
+    "description": "データベース関連の変更の実行",
+    "name": "card-file-box",
+    "semver": "patch"
+  },
+  {
+    "emoji": "🔊",
+    "entity": "&#128266;",
+    "code": ":loud_sound:",
+    "description": "ログの追加/更新",
+    "name": "loud-sound",
+    "semver": null
+  },
+  {
+    "emoji": "🔇",
+    "entity": "&#128263;",
+    "code": ":mute:",
+    "description": "ログ削除",
+    "name": "mute",
+    "semver": null
+  },
+  {
+    "emoji": "👥",
+    "entity": "&#128101;",
+    "code": ":busts_in_silhouette:",
+    "description": "コントリビューター追加/更新",
+    "name": "busts-in-silhouette",
+    "semver": null
+  },
+  {
+    "emoji": "🚸",
+    "entity": "&#128696;",
+    "code": ":children_crossing:",
+    "description": "UX/ユーザビリティ改善",
+    "name": "children-crossing",
+    "semver": "patch"
+  },
+  {
+    "emoji": "🏗️",
+    "entity": "&#1f3d7;",
+    "code": ":building_construction:",
+    "description": "アーキテクチャの変更",
+    "name": "building-construction",
+    "semver": null
+  },
+  {
+    "emoji": "📱",
+    "entity": "&#128241;",
+    "code": ":iphone:",
+    "description": "レスポンシブデザイン",
+    "name": "iphone",
+    "semver": "patch"
+  },
+  {
+    "emoji": "🤡",
+    "entity": "&#129313;",
+    "code": ":clown_face:",
+    "description": "モックテスト",
+    "name": "clown-face",
+    "semver": null
+  },
+  {
+    "emoji": "🥚",
+    "entity": "&#129370;",
+    "code": ":egg:",
+    "description": "イースターエッグ追加",
+    "name": "egg",
+    "semver": "patch"
+  },
+  {
+    "emoji": "🙈",
+    "entity": "&#8bdfe7;",
+    "code": ":see_no_evil:",
+    "description": ".gitignore追加",
+    "name": "see-no-evil",
+    "semver": null
+  },
+  {
+    "emoji": "📸",
+    "entity": "&#128248;",
+    "code": ":camera_flash:",
+    "description": "スナップショット追加/更新",
+    "name": "camera-flash",
+    "semver": null
+  },
+  {
+    "emoji": "⚗️",
+    "entity": "&#x2697;",
+    "code": ":alembic:",
+    "description": "新機能の実験",
+    "name": "alembic",
+    "semver": "patch"
+  },
+  {
+    "emoji": "🔍️",
+    "entity": "&#128269;",
+    "code": ":mag:",
+    "description": "SEO改善",
+    "name": "mag",
+    "semver": "patch"
+  },
+  {
+    "emoji": "🏷️",
+    "entity": "&#127991;",
+    "code": ":label:",
+    "description": "型の追加/更新",
+    "name": "label",
+    "semver": "patch"
+  },
+  {
+    "emoji": "🌱",
+    "entity": "&#127793;",
+    "code": ":seedling:",
+    "description": "シードファイルの追加/更新",
+    "name": "seedling",
+    "semver": null
+  },
+  {
+    "emoji": "🚩",
+    "entity": "&#x1F6A9;",
+    "code": ":triangular_flag_on_post:",
+    "description": "フィーチャーフラグの追加/更新/削除",
+    "name": "triangular-flag-on-post",
+    "semver": "patch"
+  },
+  {
+    "emoji": "🥅",
+    "entity": "&#x1F945;",
+    "code": ":goal_net:",
+    "description": "エラーキャッチ",
+    "name": "goal-net",
+    "semver": "patch"
+  },
+  {
+    "emoji": "💫",
+    "entity": "&#x1f4ab;",
+    "code": ":dizzy:",
+    "description": "アニメーションやトランジションの追加/更新",
+    "name": "dizzy",
+    "semver": "patch"
+  },
+  {
+    "emoji": "🗑️",
+    "entity": "&#x1F5D1;",
+    "code": ":wastebasket:",
+    "description": "クリーンアップが必要なコードの非推奨化",
+    "name": "wastebasket",
+    "semver": "patch"
+  },
+  {
+    "emoji": "🛂",
+    "entity": "&#x1F6C2;",
+    "code": ":passport_control:",
+    "description": "認証/ロール/パーミッションに関するコード",
+    "name": "passport-control",
+    "semver": "patch"
+  },
+  {
+    "emoji": "🩹",
+    "entity": "&#x1FA79;",
+    "code": ":adhesive_bandage:",
+    "description": "重大でない問題の軽微な修正",
+    "name": "adhesive-bandage",
+    "semver": "patch"
+  },
+  {
+    "emoji": "🧐",
+    "entity": "&#x1F9D0;",
+    "code": ":monocle_face:",
+    "description": "データの探索/検査",
+    "name": "monocle-face",
+    "semver": null
+  },
+  {
+    "emoji": "⚰️",
+    "entity": "&#x26B0;",
+    "code": ":coffin:",
+    "description": "デッドコード削除",
+    "name": "coffin",
+    "semver": null
+  },
+  {
+    "emoji": "🧪",
+    "entity": "&#x1F9EA;",
+    "code": ":test_tube:",
+    "description": "失敗するテストの追加",
+    "name": "test-tube",
+    "semver": null
+  },
+  {
+    "emoji": "👔",
+    "entity": "&#128084;",
+    "code": ":necktie:",
+    "description": "ビジネスロジックの追加/更新",
+    "name": "necktie",
+    "semver": "patch"
+  },
+  {
+    "emoji": "🩺",
+    "entity": "&#x1FA7A;",
+    "code": ":stethoscope:",
+    "description": "ヘルスチェックの追加/更新",
+    "name": "stethoscope",
+    "semver": null
+  },
+  {
+    "emoji": "🧱",
+    "entity": "&#x1f9f1;",
+    "code": ":bricks:",
+    "description": "インフラ関連の変更",
+    "name": "bricks",
+    "semver": null
+  },
+  {
+    "emoji": "🧑‍💻",
+    "entity": "&#129489;&#8205;&#128187;",
+    "code": ":technologist:",
+    "description": "DX改善",
+    "name": "technologist",
+    "semver": null
+  },
+  {
+    "emoji": "💸",
+    "entity": "&#x1F4B8;",
+    "code": ":money_with_wings:",
+    "description": "スポンサーやお金に関するインフラの追加",
+    "name": "money-with-wings",
+    "semver": null
+  },
+  {
+    "emoji": "🧵",
+    "entity": "&#x1F9F5;",
+    "code": ":thread:",
+    "description": "マルチスレッドや並行処理に関連するコードの追加/更新",
+    "name": "thread",
+    "semver": null
+  },
+  {
+    "emoji": "🦺",
+    "entity": "&#x1F9BA;",
+    "code": ":safety_vest:",
+    "description": "バリデーションの追加/更新",
+    "name": "safety-vest",
+    "semver": null
+  },
+  {
+    "emoji": "✈️",
+    "entity": "&#x2708;",
+    "code": ":airplane:",
+    "description": "オフライン対応の改善",
+    "name": "airplane",
+    "semver": null
+  }
+]
