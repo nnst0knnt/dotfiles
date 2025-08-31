@@ -1,6 +1,6 @@
-Host github.com github.com--nnst0knnt
+Host github.com github.com--{{GIT_USER_NAME}}
   HostName github.com
-  IdentityFile ~/.ssh/github/nnst0knnt
+  IdentityFile ~/.ssh/github/{{SSH_KEY_NAME}}
   User git
   Port 22
   TCPKeepAlive yes

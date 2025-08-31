@@ -1,5 +1,5 @@
 function counter_help
-	echo "
+    echo "
 📊 counter - ファイル行数・サイズカウントツール
 
 [使用方法]
@@ -23,16 +23,15 @@ counter [オプション] [ファイル/ディレクトリ...] [除外パター�
 	- name：ファイル名順（昇順、デフォルト）
 
 [例]
-counter some_dir                  # 指定ディレクトリをカウント
-counter file1.ts file2.ts         # 特定のファイルをカウント
-counter -d ./src -e node_modules  # 除外パターンを指定
-counter src -f tree               # ツリー形式で表示
-counter -n 10 -s size             # サイズの大きい順に10ファイルまで表示"
+counter some_dir
+counter file1.ts file2.ts
+counter -d ./src -e node_modules
+counter src -f tree
+counter -n 10 -s size"
 end
 
-function counter -d "ファイル行数とサイズをカウントする"
-    # argparseを使用してオプションを解析
-    argparse 'h/help' 'd/dir=' 'e/exclude=+' 'f/format=' 'n/number=' 's/sort=' -- $argv
+function counter -d ファイル行数とサイズをカウントする
+    argparse h/help 'd/dir=' 'e/exclude=+' 'f/format=' 'n/number=' 's/sort=' -- $argv
     or return
 
     if set -q _flag_help
@@ -40,10 +39,9 @@ function counter -d "ファイル行数とサイズをカウントする"
         return 0
     end
 
-    # ファイルサイズを人間が読みやすい形式に変換する関数
     function __format_size
         set -l size $argv[1]
-        
+
         if test $size -lt 1024
             echo "$size B"
         else if test $size -lt 1048576
@@ -58,14 +56,12 @@ function counter -d "ファイル行数とサイズをカウントする"
         end
     end
 
-    # デフォルト値の設定
     set -l target_paths
     set -l exclude_patterns
-    set -l format "detail"
-    set -l max_files 0  # 0は制限なし
-    set -l sort_type "name"
+    set -l format detail
+    set -l max_files 0
+    set -l sort_type name
 
-    # オプションの処理
     if set -q _flag_dir
         set -a target_paths $_flag_dir
     end
@@ -76,11 +72,11 @@ function counter -d "ファイル行数とサイズをカウントする"
 
     if set -q _flag_format
         switch $_flag_format
-            case "simple" "detail" "tree"
+            case simple detail tree
                 set format $_flag_format
             case '*'
                 set_color red
-                echo "⚠️  エラー：不正なフォーマット指定です（simple|detail|tree）"
+                echo "⚠️ エラー：不正なフォーマット指定です（simple | detail | tree）"
                 set_color normal
                 return 1
         end
@@ -89,7 +85,7 @@ function counter -d "ファイル行数とサイズをカウントする"
     if set -q _flag_number
         if not string match -qr '^[0-9]+$' -- $_flag_number
             set_color red
-            echo "⚠️  エラー：ファイル数は正の整数で指定してください"
+            echo "⚠️ エラー：ファイル数は正の整数で指定してください"
             set_color normal
             return 1
         end
@@ -98,17 +94,16 @@ function counter -d "ファイル行数とサイズをカウントする"
 
     if set -q _flag_sort
         switch $_flag_sort
-            case "size" "lines" "name"
+            case size lines name
                 set sort_type $_flag_sort
             case '*'
                 set_color red
-                echo "⚠️  エラー：不正なソート指定です（size|lines|name）"
+                echo "⚠️ エラー：不正なソート指定です（size | lines | name）"
                 set_color normal
                 return 1
         end
     end
 
-    # 残りの引数を処理
     for arg in $argv
         switch $arg
             case '-*'
@@ -118,34 +113,29 @@ function counter -d "ファイル行数とサイズをカウントする"
         end
     end
 
-    # ターゲットパスが指定されていない場合はカレントディレクトリを使用
     if test (count $target_paths) -eq 0
         set target_paths "."
     end
 
-    # 除外パターンの構築
     set -l find_exclude_args
     for pattern in $exclude_patterns
         set -a find_exclude_args -not -path "*/$pattern/*" -not -path "*/$pattern"
     end
 
-    # ファイル検索とカウント処理
     echo
     set_color yellow
     echo "🔍 ファイルを検索中..."
     set_color normal
-    
+
     set -l files
     for target in $target_paths
         if test -f $target
-            # ファイルが直接指定された場合
             set -a files $target
         else if test -d $target
-            # ディレクトリが指定された場合
             set -a files (find $target -type f $find_exclude_args)
         else
             set_color red
-            echo "⚠️  警告：'$target' は存在しないため無視されます"
+            echo "⚠️ 警告：'$target' は存在しないため無視されます"
             set_color normal
         end
     end
@@ -153,27 +143,24 @@ function counter -d "ファイル行数とサイズをカウントする"
 
     if test (count $files) -eq 0
         set_color red
-        echo "⚠️  エラー：カウント対象のファイルが見つかりませんでした"
+        echo "⚠️ エラー：カウント対象のファイルが見つかりませんでした"
         set_color normal
         return 1
     end
 
-    # ファイル数を表示
     set -l total_file_count (count $files)
     set_color green
     echo "✅ $total_file_count 個のファイルが見つかりました"
     set_color normal
-    
-    # ファイル情報の収集とソート
+
     set_color yellow
     echo "📊 ファイル情報を解析中..."
     set_color normal
-    
+
     set -l file_info_list
     set -l processed_count 0
     set -l progress_interval 100
-    
-    # 大量のファイルの場合は進捗表示間隔を調整
+
     if test $total_file_count -gt 1000
         set progress_interval 500
     else if test $total_file_count -gt 100
@@ -181,47 +168,43 @@ function counter -d "ファイル行数とサイズをカウントする"
     else
         set progress_interval 25
     end
-    
+
     for file in $files
         set -l lines (wc -l < $file 2>/dev/null; or echo 0)
         set -l size (stat -c%s $file 2>/dev/null; or echo 0)
         set -a file_info_list "$file:$lines:$size"
-        
+
         set processed_count (math $processed_count + 1)
-        
-        # 進捗表示
+
         if test (math $processed_count % $progress_interval) -eq 0
             set -l percentage (math "round($processed_count * 100 / $total_file_count)")
-            printf "\r⏳ 進捗: %d/%d (%d%%) " $processed_count $total_file_count $percentage
+            printf "\r⏳ 進捗：%d/%d (%d%%) " $processed_count $total_file_count $percentage
         end
     end
-    
-    # 進捗行をクリア
+
     if test $total_file_count -gt $progress_interval
         printf "\r%50s\r" " "
     end
-    
+
     set_color green
     echo "✅ ファイル解析が完了しました"
     set_color normal
 
-    # ソート処理
     if test $total_file_count -gt 100
         set_color yellow
         echo "🔄 ソート中..."
         set_color normal
     end
-    
+
     switch $sort_type
-        case "size"
+        case size
             set file_info_list (printf "%s\n" $file_info_list | sort -t: -k3 -nr)
-        case "lines"
+        case lines
             set file_info_list (printf "%s\n" $file_info_list | sort -t: -k2 -nr)
-        case "name"
+        case name
             set file_info_list (printf "%s\n" $file_info_list | sort -t: -k1)
     end
 
-    # 表示件数制限
     if test $max_files -gt 0
         set file_info_list (printf "%s\n" $file_info_list | head -n $max_files)
         if test $max_files -lt $total_file_count
@@ -231,16 +214,15 @@ function counter -d "ファイル行数とサイズをカウントする"
         end
     end
 
-    echo # 実行コマンドと結果の間に空行を追加
+    echo
 
-    # ヘッダー表示
     set_color cyan
     echo "📊 ファイル解析結果"
     set_color normal
     echo "────────────────────────────────────────────────────────────"
 
     switch $format
-        case "simple"
+        case simple
             set -l total_lines 0
             set -l total_size 0
             set -l file_count 0
@@ -252,16 +234,16 @@ function counter -d "ファイル行数とサイズをカウントする"
                 set total_size (math $total_size + $size)
                 set file_count (math $file_count + 1)
             end
-            
+
             set -l formatted_total_size (__format_size $total_size)
-            
+
             set_color green
             echo " 📁 合計ファイル数：$file_count"
             echo " 📝 合計行数：$total_lines 行"
             echo " 💾 合計サイズ：$formatted_total_size"
             set_color normal
 
-        case "detail"
+        case detail
             set -l max_length 0
             set -l total_lines 0
             set -l total_size 0
@@ -284,14 +266,14 @@ function counter -d "ファイル行数とサイズをカウントする"
                 set total_lines (math $total_lines + $lines)
                 set total_size (math $total_size + $size)
                 set file_count (math $file_count + 1)
-                
+
                 set_color blue
                 printf " %s" $file
                 set_color normal
-                
+
                 set -l padding (math $max_length - (string length -- $file))
                 printf "%"$padding"s" " "
-                
+
                 set_color yellow
                 printf "│ "
                 set_color green
@@ -302,9 +284,9 @@ function counter -d "ファイル行数とサイズをカウントする"
                 printf "(%s)\n" $formatted_size
                 set_color normal
             end
-            
+
             set -l formatted_total_size (__format_size $total_size)
-            
+
             echo "────────────────────────────────────────────────────────────"
             set_color green
             echo " 📁 合計ファイル数：$file_count"
@@ -312,7 +294,7 @@ function counter -d "ファイル行数とサイズをカウントする"
             echo " 💾 合計サイズ：$formatted_total_size"
             set_color normal
 
-        case "tree"
+        case tree
             function __print_tree
                 set -l path $argv[1]
                 set -l prefix $argv[2]
@@ -321,17 +303,17 @@ function counter -d "ファイル行数とサイズをカウントする"
                 set -l formatted_size $argv[5]
 
                 set -l basename (basename $path)
-                if test $is_last = "true"
+                if test $is_last = true
                     set_color blue
                     printf "%s└── " $prefix
                 else
                     set_color blue
                     printf "%s├── " $prefix
                 end
-                
+
                 set_color normal
                 printf "%s " $basename
-                
+
                 set_color green
                 printf "(%d 行" $lines
                 set_color normal
@@ -358,9 +340,9 @@ function counter -d "ファイル行数とサイズをカウントする"
 
                 set -l dir (dirname $file)
                 set -l depth (string replace -r '^\./' '' $dir | string split '/' | count)
-                set -l prefix "    "
+                set -l prefix " "
                 if test $depth -gt 1
-                    set prefix (string repeat --count (math $depth - 1) "    ")
+                    set prefix (string repeat --count (math $depth - 1) " ")
                 end
 
                 if test $dir != $prev_dir
@@ -376,8 +358,7 @@ function counter -d "ファイル行数とサイズをカウントする"
                     set prefix ""
                 end
 
-                # 次のファイルとの比較で最後かどうかを判定
-                set -l is_last "true"
+                set -l is_last true
                 set -l current_index 0
                 for info_check in $file_info_list
                     set current_index (math $current_index + 1)
@@ -385,13 +366,13 @@ function counter -d "ファイル行数とサイズをカウントする"
                         break
                     end
                 end
-                
+
                 if test $current_index -lt (count $file_info_list)
                     set -l next_info $file_info_list[(math $current_index + 1)]
                     set -l next_parts (string split ":" $next_info)
                     set -l next_file $next_parts[1]
                     if test (dirname $next_file) = $dir
-                        set is_last "false"
+                        set is_last false
                     end
                 end
 
@@ -410,9 +391,8 @@ function counter -d "ファイル行数とサイズをカウントする"
             set_color normal
     end
 
-    echo # 結果とプロンプトの間に空行を追加
+    echo
 
-    # 内部関数のクリーンアップ
     functions -e __print_tree
     functions -e __format_size
 end

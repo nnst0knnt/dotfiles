@@ -1,7 +1,3 @@
--- ~/.config/nvim/lua/plugins.lua
--- JetBrains Mono Nerd Font用のクリーンなプラグイン設定
-
--- lazy.nvimのブートストラップ
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system({
@@ -15,25 +11,20 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
--- プラグイン設定
 require("lazy").setup({
-  -- カラースキーム（tokyonight）
   {
     "folke/tokyonight.nvim",
     lazy = false,
     priority = 1000,
     config = function()
-      vim.cmd[[colorscheme tokyonight-night]]
+      vim.cmd([[colorscheme tokyonight-night]])
     end,
   },
 
-  -- アイコン（JetBrains Mono Nerd Fontのデフォルトを使用）
   {
     "nvim-tree/nvim-web-devicons",
-    -- デフォルト設定をそのまま使用（カスタム不要）
   },
 
-  -- ファイルエクスプローラー
   {
     "nvim-tree/nvim-tree.lua",
     dependencies = { "nvim-tree/nvim-web-devicons" },
@@ -56,39 +47,33 @@ require("lazy").setup({
             },
           },
         },
-        -- 自動起動設定を追加
         actions = {
           open_file = {
-            quit_on_open = false,  -- ファイルを開いてもNvimTreeを閉じない
+            quit_on_open = false,
           },
         },
       })
-      
-      -- キーマップ
-      vim.keymap.set('n', '<leader>e', ':NvimTreeToggle<CR>', { noremap = true, silent = true })
-      
-      -- Neovim起動時に自動でNvimTreeを開く
+
+      vim.keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>", { noremap = true, silent = true })
       vim.api.nvim_create_autocmd("VimEnter", {
         callback = function()
-          -- ディレクトリを開いた場合や引数なしで起動した場合にNvimTreeを開く
           if vim.fn.argc() == 0 or vim.fn.isdirectory(vim.fn.argv(0)) == 1 then
-          require("nvim-tree.api").tree.open()
+            require("nvim-tree.api").tree.open()
           end
         end,
       })
     end,
   },
 
-  -- ファジーファインダー（telescope）
   {
     "nvim-telescope/telescope.nvim",
-    dependencies = { 
+    dependencies = {
       "nvim-lua/plenary.nvim",
     },
     config = function()
       local telescope = require("telescope")
       local actions = require("telescope.actions")
-      
+
       telescope.setup({
         defaults = {
           mappings = {
@@ -100,17 +85,15 @@ require("lazy").setup({
           },
         },
       })
-      
-      -- キーマップ
-      local builtin = require('telescope.builtin')
-      vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
-      vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
-      vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
-      vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
+
+      local builtin = require("telescope.builtin")
+      vim.keymap.set("n", "<leader>ff", builtin.find_files, {})
+      vim.keymap.set("n", "<leader>fg", builtin.live_grep, {})
+      vim.keymap.set("n", "<leader>fb", builtin.buffers, {})
+      vim.keymap.set("n", "<leader>fh", builtin.help_tags, {})
     end,
   },
 
-  -- ステータスライン
   {
     "nvim-lualine/lualine.nvim",
     dependencies = { "nvim-tree/nvim-web-devicons" },
@@ -125,16 +108,25 @@ require("lazy").setup({
     end,
   },
 
-  -- シンタックスハイライト
   {
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
     config = function()
       require("nvim-treesitter.configs").setup({
         ensure_installed = {
-          "lua", "vim", "vimdoc", "query",
-          "javascript", "typescript", "html", "css",
-          "python", "bash", "json", "yaml", "markdown",
+          "lua",
+          "vim",
+          "vimdoc",
+          "query",
+          "javascript",
+          "typescript",
+          "html",
+          "css",
+          "python",
+          "bash",
+          "json",
+          "yaml",
+          "markdown",
         },
         sync_install = false,
         auto_install = true,
@@ -149,7 +141,6 @@ require("lazy").setup({
     end,
   },
 
-  -- 自動ペア
   {
     "windwp/nvim-autopairs",
     event = "InsertEnter",
@@ -158,7 +149,6 @@ require("lazy").setup({
     end,
   },
 
-  -- コメントアウト
   {
     "numToStr/Comment.nvim",
     config = function()
@@ -166,7 +156,6 @@ require("lazy").setup({
     end,
   },
 
-  -- インデントガイド
   {
     "lukas-reineke/indent-blankline.nvim",
     main = "ibl",
@@ -175,7 +164,6 @@ require("lazy").setup({
     end,
   },
 
-  -- Git統合
   {
     "lewis6991/gitsigns.nvim",
     config = function()
@@ -191,7 +179,6 @@ require("lazy").setup({
     end,
   },
 
-  -- バッファライン
   {
     "akinsho/bufferline.nvim",
     dependencies = "nvim-tree/nvim-web-devicons",
